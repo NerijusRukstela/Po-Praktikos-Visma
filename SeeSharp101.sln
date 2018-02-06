@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeSharp101", "SeeSharp101\SeeSharp101.csproj", "{E8C10A9B-885E-43AE-A877-3BDDD03D93FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeSharp101.Tests", "SeeSharp101.Tests\SeeSharp101.Tests.csproj", "{C8528EBB-D078-42D5-83CC-496AD6C059B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8C10A9B-885E-43AE-A877-3BDDD03D93FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8C10A9B-885E-43AE-A877-3BDDD03D93FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8C10A9B-885E-43AE-A877-3BDDD03D93FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8C10A9B-885E-43AE-A877-3BDDD03D93FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8528EBB-D078-42D5-83CC-496AD6C059B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8528EBB-D078-42D5-83CC-496AD6C059B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8528EBB-D078-42D5-83CC-496AD6C059B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8528EBB-D078-42D5-83CC-496AD6C059B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D88FD36-6445-4B13-B2A5-1F7960846F30}
+	EndGlobalSection
+EndGlobal
