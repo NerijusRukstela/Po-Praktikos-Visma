@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace SeeSharp101.Basics
 {
@@ -19,9 +21,18 @@ namespace SeeSharp101.Basics
             string newString = Convert.ToString(myStringBuilder);
 
             return newString;
+        }
 
-
-
+        public static XDocument GetStatisticsXml(Graph graph)
+        {
+          
+            XDocument doc = new XDocument(new XElement("<?xml version='1.0'?>",
+                                          new XElement("< graph connected = 'true'>",
+                                          new XElement("<name>Master Graph</name>"),
+                                          new XElement("<description>One Graph to Rule Them All</description>"),
+                                          new XElement("</graph>"))));
+            
+            return doc;
         }
     }
 }

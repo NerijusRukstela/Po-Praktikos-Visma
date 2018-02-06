@@ -46,9 +46,17 @@ namespace SeeSharp101.Tests.Basics
         [TestMethod]
         public void Should_Report_Statistics_Is_Not_Empty()
         {
-             
+            var graph = new Graph(new int[3, 3] { { 0, 1, 1 }, { 1, 0, 1 }, { 1, 1, 0 } }, "Master Graph");
+            Assert.AreEqual(true, graph.IsConnected);
+            Assert.AreEqual(graph.Name, "Master Graph");
+            Assert.AreEqual(graph.Description, "One Graph to Rule Them All");
         }
        
+        [TestMethod]
+        public void Should_Report_StatisticsXml_Is_Not_Empty()
+        {
+          
+        }
 
         
     }

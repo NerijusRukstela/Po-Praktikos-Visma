@@ -11,21 +11,7 @@ namespace SeeSharp101.Basics
          public int[,] AdjacencyMatrix { get; private set; }
 
 
-
-        public string GetStatistics()
-        {
-            StringBuilder myStringBuilder = new StringBuilder();
-
-            myStringBuilder.Append(String.Format("{0,6} {1,15}\n\n", "Name", Name));
-            myStringBuilder.Append(String.Format("{0,6} {1,15:N0}\n", "Description", Description));
-            myStringBuilder.Append(String.Format("{0,6} {1,15:N0}\n", "IsConnected", IsConnected));
-            string newString = Convert.ToString(myStringBuilder);
-
-            return newString;
-
-
-
-        }
+        
 
         public bool IsConnected
          {
@@ -52,7 +38,13 @@ namespace SeeSharp101.Basics
                 return isTrue;
              }
          }
-         public Graph(string name, string description = "One Graph to Rule Them All")
+        public Graph(int[,] adjacencyMatrix, string name, string description = "One Graph to Rule Them All")
+        {
+            this.Name = name;
+            this.Description = description;
+            this.AdjacencyMatrix = adjacencyMatrix;
+        }
+        public Graph(string name, string description = "One Graph to Rule Them All")
          {
             this.Name = name;
             this.Description = description;
@@ -64,6 +56,11 @@ namespace SeeSharp101.Basics
             this.AdjacencyMatrix = adjacencyMatrix;
       
         }
+        public Graph(Graph graph)
+        {
+            GraphExtensions.GetStatisticsXml(graph);
+        }
+
        
     }
 }

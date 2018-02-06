@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Basics\Graph.cs" />
     <Compile Include="Basics\GraphExtensions.cs" />
+    <Compile Include="Basics\StringExtensions.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
