@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace SeeSharp101.Basics
 {
-    static class StringExtensions 
+    public static class StringExtensions 
     {
         public static string Reverse(Graph graph)
         {
-            string nam = "ll";
-            return nam;
+            char[] cArray = graph.Name.ToCharArray();
+            string reverse = String.Empty;
+            for (int i = cArray.Length - 1; i > -1; i--)
+            {
+                reverse += cArray[i];
+            }
+            return reverse;
         }
     }
 }

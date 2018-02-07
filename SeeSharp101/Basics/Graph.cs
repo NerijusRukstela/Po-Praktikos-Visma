@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Text;
+using System.Collections.Generic;
 
 namespace SeeSharp101.Basics
 {
-    public class Graph
+    public class Graph : GraphBase
     {
-        
-         public string Name { get; private set; }
-         public string Description { get; private set; }
-         public int[,] AdjacencyMatrix { get; private set; }
-
-
+       
+        public int[,] AdjacencyMatrix { get; private set; }
+        public override Dictionary<int, Vertex> Vertices { get; set; }
         
 
-        public bool IsConnected
+        public override bool IsConnected
          {
-             get
-             {
+            get
+            {
                 int roundI = -1;
                 bool isTrue = true;
                 for (int i = 0; i < AdjacencyMatrix.GetLength(0); i++)
@@ -36,31 +34,35 @@ namespace SeeSharp101.Basics
                     }
                 }
                 return isTrue;
-             }
+            }
+            
          }
-        public Graph(int[,] adjacencyMatrix, string name, string description = "One Graph to Rule Them All")
+
+
+        public Graph(string name, string description, int[,] adjacencyMatrix)
         {
+
             this.Name = name;
             this.Description = description;
             this.AdjacencyMatrix = adjacencyMatrix;
         }
         public Graph(string name, string description = "One Graph to Rule Them All")
          {
-            this.Name = name;
-            this.Description = description;
+            Name = name;
+            Description = description;
          }
-        
+        public Graph(string name)
+        {
+            Name = name;
+        }
+
         public Graph(int[,] adjacencyMatrix)
         {
            // if (adjacencyMatrix.Length == 0) throw new ArgumentException("ll");
             this.AdjacencyMatrix = adjacencyMatrix;
       
         }
-        public Graph(Graph graph)
-        {
-            GraphExtensions.GetStatisticsXml(graph);
-        }
+        
 
-       
     }
 }

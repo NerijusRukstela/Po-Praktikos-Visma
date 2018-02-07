@@ -8,8 +8,40 @@ using System.Xml;
 
 namespace SeeSharp101.Basics
 {
-    static class GraphExtensions
+    public static class GraphExtensions
     {
+        public static XmlDocument GetStatisticsXml(this Graph graph)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            //Declaration    
+
+            XmlDeclaration xmlDec;
+            xmlDec = xmlDoc.CreateXmlDeclaration("1.0", null, null);
+            xmlDoc.AppendChild(xmlDec);
+
+            //Root node with attribute     
+            XmlNode rootNode = xmlDoc.CreateElement("graph");
+            XmlAttribute connAttribute = xmlDoc.CreateAttribute("connected");
+            connAttribute.Value = graph.IsConnected.ToString().ToLower();
+            rootNode.Attributes.Append(connAttribute);
+            xmlDoc.AppendChild(rootNode);
+            
+            //Name node  
+            XmlNode nameNode = xmlDoc.CreateElement("name");
+            nameNode.InnerText = graph.Name;
+            rootNode.AppendChild(nameNode);
+
+            //Description node       
+            XmlNode descriptionNode = xmlDoc.CreateElement("description");
+            descriptionNode.InnerText = graph.Description;
+            rootNode.AppendChild(descriptionNode);
+            return xmlDoc;
+        }
+
+        public static string GetXMLAsString(XmlDocument myxml)
+        {
+            return myxml.OuterXml;
+        }
 
         public static string GetStatistics(Graph graph)
         {
@@ -19,20 +51,9 @@ namespace SeeSharp101.Basics
             myStringBuilder.Append(String.Format("{0,6} {1,15:N0}\n", "Description", graph.Description));
             myStringBuilder.Append(String.Format("{0,6} {1,15:N0}\n", "IsConnected", graph.IsConnected));
             string newString = Convert.ToString(myStringBuilder);
+            
 
             return newString;
-        }
-
-        public static XDocument GetStatisticsXml(Graph graph)
-        {
-          
-            XDocument doc = new XDocument(new XElement("<?xml version='1.0'?>",
-                                          new XElement("< graph connected = 'true'>",
-                                          new XElement("<name>Master Graph</name>"),
-                                          new XElement("<description>One Graph to Rule Them All</description>"),
-                                          new XElement("</graph>"))));
-            
-            return doc;
         }
     }
 }
