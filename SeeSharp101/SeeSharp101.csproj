@@ -40,13 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basics\Edge.cs" />
     <Compile Include="Basics\Graph.cs" />
     <Compile Include="Basics\GraphBase.cs" />
     <Compile Include="Basics\GraphExtensions.cs" />
-    <Compile Include="Basics\hashtable.cs" />
+    <Compile Include="Basics\MetadataBase.cs" />
     <Compile Include="Basics\StringExtensions.cs" />
     <Compile Include="Basics\Vertex.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="IGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

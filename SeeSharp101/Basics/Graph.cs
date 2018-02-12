@@ -4,12 +4,48 @@ using System.Collections.Generic;
 
 namespace SeeSharp101.Basics
 {
-    public class Graph : GraphBase
+    public class Graph : GraphBase // , IGraph
     {
        
         public int[,] AdjacencyMatrix { get; private set; }
-        public override Dictionary<int, Vertex> Vertices { get; set; }
-        
+
+        public override Dictionary<int, Vertex> Vertices
+        { get
+            {
+
+
+                var dictionary = new Dictionary<int, Vertex>();
+
+
+                for (int i = 0; i < AdjacencyMatrix.GetLength(0); i++)
+                {
+                    Vertex newVertexObject = new Vertex();
+                    newVertexObject.Index = i;
+                    newVertexObject.Neighbours = null;
+                    dictionary.Add(newVertexObject.Index, newVertexObject);
+
+
+                }
+               
+
+                for (int i = 0; i < AdjacencyMatrix.GetLength(0); i++)
+                {
+                    var neighbours = new List<Vertex>();
+                    for (int j = 0; j < AdjacencyMatrix.GetLength(0); j++)
+                    {
+                       
+                        if (AdjacencyMatrix[i, j] == 1 && i != j)
+                        {
+                            neighbours.Add((Vertex)dictionary[j]);
+                        }
+                    }
+                    ((Vertex)dictionary[i]).Neighbours = neighbours;
+                }
+                return dictionary;
+            }
+
+        }
+
 
         public override bool IsConnected
          {
@@ -20,7 +56,7 @@ namespace SeeSharp101.Basics
                 for (int i = 0; i < AdjacencyMatrix.GetLength(0); i++)
                 {
                     roundI = roundI + 1;
-                    for (int j = 0; j < AdjacencyMatrix.GetLength(1); j++)
+                    for (int j = 0; j < AdjacencyMatrix.GetLength(0); j++)
                     {
                         if (i == roundI && i == j) { }
                         else
@@ -62,7 +98,12 @@ namespace SeeSharp101.Basics
             this.AdjacencyMatrix = adjacencyMatrix;
       
         }
-        
+        public Graph()
+        {
+            // if (adjacencyMatrix.Length == 0) throw new ArgumentException("ll");
+     
+        }
+
 
     }
 }
