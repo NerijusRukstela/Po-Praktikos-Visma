@@ -6,16 +6,36 @@ using System.Threading.Tasks;
 
 namespace SeeSharp101.Basics
 {
-    public class Vertex : MetadataBase
+    public class Vertex // : MetadataBase
     {
-        public int Index { get; set; }
-        public List<Vertex> Neighbours { get; set; }
+        private int Index { get; set; }
+        private List<Vertex> _neighbours = new List<Vertex>();
+        private IEnumerable<string> keys;
 
-        public Vertex()
-        {
+        public string Key { get; set; }
+        public IEnumerable<Vertex> Neighbours {
+            get
+            {
 
-            
-
+                return _neighbours;
+            }
         }
+
+       
+        public Vertex(string key)
+        {
+        }
+
+        public Vertex(IEnumerable<string> keys)
+        {
+            this.keys = keys;
+        }
+
+        //public void AddNeighbour(Vertex vertex)
+        //{
+
+        //}
+
+      
     }
 }

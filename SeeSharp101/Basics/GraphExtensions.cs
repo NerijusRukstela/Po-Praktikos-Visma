@@ -43,7 +43,7 @@ namespace SeeSharp101.Basics
             return myxml.OuterXml;
         }
 
-        public static string GetStatistics(Graph graph)
+        public static string GetStatistics(this Graph graph)
         {
             StringBuilder myStringBuilder = new StringBuilder();
 

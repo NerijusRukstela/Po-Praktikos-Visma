@@ -1,54 +1,26 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 
 namespace SeeSharp101.Basics
 {
-    public class Graph : GraphBase // , IGraph
+    public class Graph : MetadataBase, IGraph, IEnumerable
     {
-       
+
+        public string Description { get;  }
+        public string Name { get; }
         public int[,] AdjacencyMatrix { get; private set; }
-
-        public override Dictionary<int, Vertex> Vertices
-        { get
-            {
-
-
-                var dictionary = new Dictionary<int, Vertex>();
+        public Vertex Key { get; }
+        public IEnumerable<Vertex> Vertices { get; }
+        public IEnumerable<Edge> Edges { get; }
+       
+        List<Vertex> listVertex = new List<Vertex>();
 
 
-                for (int i = 0; i < AdjacencyMatrix.GetLength(0); i++)
-                {
-                    Vertex newVertexObject = new Vertex();
-                    newVertexObject.Index = i;
-                    newVertexObject.Neighbours = null;
-                    dictionary.Add(newVertexObject.Index, newVertexObject);
-
-
-                }
-               
-
-                for (int i = 0; i < AdjacencyMatrix.GetLength(0); i++)
-                {
-                    var neighbours = new List<Vertex>();
-                    for (int j = 0; j < AdjacencyMatrix.GetLength(0); j++)
-                    {
-                       
-                        if (AdjacencyMatrix[i, j] == 1 && i != j)
-                        {
-                            neighbours.Add((Vertex)dictionary[j]);
-                        }
-                    }
-                    ((Vertex)dictionary[i]).Neighbours = neighbours;
-                }
-                return dictionary;
-            }
-
-        }
-
-
-        public override bool IsConnected
-         {
+        public bool IsConnected
+        {
             get
             {
                 int roundI = -1;
@@ -71,22 +43,22 @@ namespace SeeSharp101.Basics
                 }
                 return isTrue;
             }
-            
-         }
+
+        }
 
 
-        public Graph(string name, string description, int[,] adjacencyMatrix)
+        public Graph(string name, string description, int[,] adjacencymatrix)
         {
 
             this.Name = name;
             this.Description = description;
-            this.AdjacencyMatrix = adjacencyMatrix;
+            this.AdjacencyMatrix = adjacencymatrix;
         }
         public Graph(string name, string description = "One Graph to Rule Them All")
-         {
+        {
             Name = name;
             Description = description;
-         }
+        }
         public Graph(string name)
         {
             Name = name;
@@ -94,15 +66,60 @@ namespace SeeSharp101.Basics
 
         public Graph(int[,] adjacencyMatrix)
         {
-           // if (adjacencyMatrix.Length == 0) throw new ArgumentException("ll");
+            // if (adjacencyMatrix.Length == 0) throw new ArgumentException("ll");
             this.AdjacencyMatrix = adjacencyMatrix;
-      
+
         }
         public Graph()
         {
             // if (adjacencyMatrix.Length == 0) throw new ArgumentException("ll");
-     
+
         }
+
+
+        public void AddEdge(string sourceVertex, string destinationVertex)
+        {
+
+            Vertex source = Vertices.FirstOrDefault(v => v.Key == sourceVertex);
+            Vertex destination = Vertices.FirstOrDefault(v => v.Key == destinationVertex);
+
+            Edge edge = new Edge(source, destination);
+           
+
+            
+
+        }
+        public void AddEdges(IEnumerable<KeyValuePair<string , string >> edge)
+        {
+
+            
+         
+        }
+        public void AddVertex(string key)
+        {
+            Vertex vertex = new Vertex(key);
+            listVertex.Add(vertex);
+
+        }
+        
+        public void AddVertices(IEnumerable<string> keys)
+        {
+           for(int i=0; i<listVertex.Count; i++)
+            {
+                Vertex vertices = new Vertex(keys);
+                listVertex.Add(vertices);
+            }
+            
+        }
+        public IEnumerable<Vertex> GetEnumerator()
+        {
+            return null;
+        }
+        IEnumerator IEnumerable.GetEnumerator() {
+
+            return (IEnumerator)this;
+        }
+       
 
 
     }

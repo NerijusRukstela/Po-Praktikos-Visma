@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace SeeSharp101.Basics
 {
-    class Edge : MetadataBase
+    public class Edge : MetadataBase
     {
+    
         public Vertex Source { get; set; }
-        public Vertex Target { get; set; }
+        public Vertex Destination { get; set; }
+        public Edge(Vertex source, Vertex destination)
+        {
+
+        }
+
+        public Edge()
+        {
+        }
     }
 }
